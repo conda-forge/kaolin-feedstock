@@ -18,19 +18,20 @@ requirements:
   build:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
-    - pytorch <=1.9.0,>=1.5.0
+    - pytorch
   host:
     - pip
     - python
     - cython ==0.29.20
     - numpy
+    - pytorch
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.2.0
     - pillow >=8.0.0
     - tqdm
-    - pytorch <=1.9.0,>=1.5.0
+    - pytorch 
    
 test:
   imports:
