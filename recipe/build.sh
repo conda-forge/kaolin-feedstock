@@ -19,4 +19,6 @@ else
   export FORCE_CUDA=1
 fi
 
+conda install -c conda-forge pytorch
+
 ${PYTHON} -m pip install . -vv
