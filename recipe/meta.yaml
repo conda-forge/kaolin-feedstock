@@ -18,6 +18,7 @@ requirements:
   build:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
+    - pytorch <=1.9.0,>=1.5.0
   host:
     - pip
     - python
