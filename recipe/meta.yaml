@@ -23,12 +23,14 @@ requirements:
     - python
     - cython ==0.29.20
     - numpy
+    - {{ pin_compatible('pytorch') }}
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.2.0
     - pillow >=8.0.0
     - tqdm
+    - {{ pin_compatible('pytorch') }}
    
 test:
   imports:
