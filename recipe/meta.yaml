@@ -21,14 +21,14 @@ requirements:
   host:
     - pip
     - python
-    - cython ==0.29.20
+    - cython 
     - numpy
     - {{ pin_compatible('pytorch') }}
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy >=1.2.0
-    - pillow >=8.0.0
+    - scipy 
+    - pillow 
     - tqdm
     - {{ pin_compatible('pytorch') }}
    
