@@ -21,8 +21,4 @@ fi
 
 export IGNORE_TORCH_VER=1
 
-## ignore strict upstream cython pin
-sed -i "s/cython==.*/cython/" ./tools/requirements.txt
-sed -i "s/0.29.20/0.29.24/g" ./setup.py
-
 ${PYTHON} -m pip install . -vv
