@@ -19,4 +19,4 @@ else
   export FORCE_CUDA=1
 fi
 
-${PYTHON} -m pip install . -vv
+${PYTHON} -m pip install --no-deps . -vv
