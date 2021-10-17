@@ -23,13 +23,14 @@ requirements:
     - python
     - cython
     - numpy
+    - pytorch-gpu
   run:
     - python
-    - {{ pin_compatible('numpy') }}
+    - numpy
     - scipy
     - pillow
     - tqdm
-    - pytorch
+    - pytorch-gpu
    
 test:
   imports:
