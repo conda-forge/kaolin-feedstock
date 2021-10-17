@@ -19,4 +19,7 @@ else
   export FORCE_CUDA=1
 fi
 
-${PYTHON} -m pip install --no-deps . -vv
+## ignore strict upstream cython pin
+sed -i "s/cython==.*/cython/" ./tools/requirements.txt
+
+${PYTHON} -m pip install . -vv
