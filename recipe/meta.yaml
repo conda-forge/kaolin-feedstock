@@ -9,9 +9,11 @@ package:
 source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 7fa6b794d83fca9b4a1eb93b13ead60767b42d5a8a25162ee73be3cead1a8c8c
+  patches:
+    - 0001-loosen-version-pins.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [cuda_compiler_version == "None" or cuda_compiler_version == "10.2"]
 
 requirements:
@@ -23,13 +25,14 @@ requirements:
     - python
     - cython
     - numpy
+    - pytorch-gpu
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy
     - pillow
     - tqdm
-    - pytorch
+    - pytorch-gpu
    
 test:
   imports:

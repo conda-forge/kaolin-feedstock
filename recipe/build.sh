@@ -19,4 +19,6 @@ else
   export FORCE_CUDA=1
 fi
 
+export IGNORE_TORCH_VER=1
+
 ${PYTHON} -m pip install . -vv
