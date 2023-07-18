@@ -13,7 +13,7 @@ source:
     - 0001-loosen-version-pins.patch
 
 build:
-  number: 2
+  number: 3
   skip: true  # [cuda_compiler_version == "None" or cuda_compiler_version == "10.2"]
   skip: true  # [win]
 requirements:
