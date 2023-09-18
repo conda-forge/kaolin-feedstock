@@ -1,73 +1,12 @@
-From e5df43f2469cc0489154402c46a535a2b06d674e Mon Sep 17 00:00:00 2001
+From af67380ed5206c02bfbecaf5abf3790f4b37f60f Mon Sep 17 00:00:00 2001
 From: Ista Zahn <istazahn@gmail.com>
 Date: Sun, 17 Oct 2021 14:20:08 -0400
 Subject: [PATCH] loosen version pins
 
 ---
- setup.py               | 47 ++----------------------------------------
- tools/requirements.txt |  2 +-
- 2 files changed, 3 insertions(+), 46 deletions(-)
+ tools/requirements.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/setup.py b/setup.py
-index 455954e..ecfeaaa 100644
---- a/setup.py
-+++ b/setup.py
-@@ -13,53 +13,10 @@ from pkg_resources import parse_version
- import warnings
- 
- TORCH_MIN_VER = '1.5.0'
--TORCH_MAX_VER = '1.9.0'
-+TORCH_MAX_VER = '1.10.0'
- CYTHON_MIN_VER = '0.29.20'
- INCLUDE_EXPERIMENTAL = environ.get('KAOLIN_INSTALL_EXPERIMENTAL') is not None
--IGNORE_TORCH_VER = environ.get('IGNORE_TORCH_VER') is not None
--
--missing_modules = []
--torch_spec = importlib.util.find_spec("torch")
--if torch_spec is None:
--    warnings.warn("Couldn't find torch installed, so this will try to install it. "
--                  "If the installation fails we recommend to first install it.")
--    if IGNORE_TORCH_VER:
--        missing_modules.append('torch')
--    else:
--        missing_modules.append(f'torch>={TORCH_MIN_VER},<={TORCH_MAX_VER}')
--else:
--    import torch
--    torch_ver = parse_version(torch.__version__)
--    if (torch_ver < parse_version(TORCH_MIN_VER) or
--        torch_ver > parse_version(TORCH_MAX_VER)):
--        if IGNORE_TORCH_VER:
--            warnings.warn(f'Kaolin is compatible with PyTorch >={TORCH_MIN_VER}, <={TORCH_MAX_VER}, '
--                          f'but found version {torch.__version__}. Continuing with the installed '
--                          'version as IGNORE_TORCH_VER is set.')
--        else:
--            warnings.warn(f'Kaolin is compatible with PyTorch >={TORCH_MIN_VER}, <={TORCH_MAX_VER}, '
--                          f'but found version {torch.__version__} instead. '
--                          'This will try to install a compatible version of PyTorch. '
--                          'If the installation fails we recommend to first install it.')
--        missing_modules.append(f'torch>={TORCH_MIN_VER},<={TORCH_MAX_VER}')
--
--cython_spec = importlib.util.find_spec("cython")
--if cython_spec is None:
--    warnings.warn("Couldn't find cython installed, so this will try to install it. "
--                  "If the installation fails we recommend to first instal it.")
--    missing_modules.append(f'cython=={CYTHON_MIN_VER}')
--else:
--    import Cython
--    cython_ver = parse_version(Cython.__version__)
--    if cython_ver != parse_version('0.29.20'):
--        warnings.warn('Kaolin is compatible with cython == 0.29.20, '
--                      f'but found version {Cython.__version__} instead. '
--                      'This will try to install cython in the right version. '
--                      'If the installation fails we recommend to first install it.')
--        missing_modules.append(f'cython=={CYTHON_MIN_VER}')
--
--
--dist.Distribution().fetch_build_eggs(missing_modules)
-+IGNORE_TORCH_VER = True
- 
- import os
- import sys
 diff --git a/tools/requirements.txt b/tools/requirements.txt
 index 5bf4784..77b8eac 100644
 --- a/tools/requirements.txt
@@ -77,5 +16,5 @@ index 5bf4784..77b8eac 100644
 +cython>=0.29.20
  torch>=1.5.0
 -- 
-2.33.1
+2.39.2 (Apple Git-143)
 
