@@ -26,6 +26,7 @@ requirements:
     - cython
     - numpy
     - pytorch =*=cuda*
+    - pytorch <2
   run:
     - python
     - {{ pin_compatible('numpy') }}
@@ -33,6 +34,7 @@ requirements:
     - pillow
     - tqdm
     - pytorch =*=cuda*
+    - pytorch <2
 
 test:
   imports:
