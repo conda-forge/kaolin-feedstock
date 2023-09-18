@@ -25,14 +25,14 @@ requirements:
     - python
     - cython
     - numpy
-    - pytorch-gpu
+    - pytorch =*=cuda*
   run:
     - python
     - {{ pin_compatible('numpy') }}
     - scipy
     - pillow
     - tqdm
-    - pytorch-gpu
+    - pytorch =*=cuda*
 
 test:
   imports:
