@@ -1,5 +1,5 @@
 {% set name = "kaolin" %}
-{% set version = "0.13.0" %}
+{% set version = "0.15.0" %}
 
 
 package:
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f0d20de5cedae1ad9c0b16771487617476cfbd0bd66aea17e8857b0b7fa14ce4
+  sha256: be1c02da148a79a5c02631d7eb30c080c079c7ea925fa89f7c4d2f24dbdfc03d
   patches:
     - 0001-loosen-version-pins.patch
 
