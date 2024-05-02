@@ -18,6 +18,7 @@ build:
   skip: true  # [win]
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
   host:
