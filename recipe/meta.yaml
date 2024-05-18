@@ -13,13 +13,14 @@ source:
     - 0001-loosen-version-pins.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [cuda_compiler_version == "None" or cuda_compiler_version == "10.2"]
   skip: true  # [win]
 requirements:
   build:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
   host:
     - pip
     - python
