@@ -1,5 +1,10 @@
 {% set version = "0.15.0" %}
 
+{% if cuda_compiler_version in (None, "None", True, False) %}
+{% set cuda_major = 0 %}
+{% else %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% endif %}
 
 package:
   name: kaolin
@@ -30,6 +35,11 @@ requirements:
     - pytorch
     - pytorch =*=cuda*
     - cuda-version {{ cuda_compiler_version }}
+    {% if cuda_major >= 12 %}
+    - libcublas-dev
+    - libcusolver-dev
+    - libcusparse-dev
+    {% endif %}
   run:
     - python
     - {{ pin_compatible('numpy') }}
