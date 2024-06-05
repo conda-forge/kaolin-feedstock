@@ -21,8 +21,10 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
   host:
-    - pip
     - python
+    - pip
+    # still using removed `from pkg_resources import packaging`
+    - setuptools <70
     - cython
     - numpy
     - pytorch
