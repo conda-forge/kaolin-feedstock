@@ -20,6 +20,7 @@ requirements:
   build:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
   host:
     - pip
     - python
