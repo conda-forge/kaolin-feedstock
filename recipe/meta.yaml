@@ -1,9 +1,8 @@
-{% set name = "kaolin" %}
 {% set version = "0.15.0" %}
 
 
 package:
-  name: {{ name|lower }}
+  name: kaolin
   version: {{ version }}
 
 source:
