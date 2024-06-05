@@ -29,6 +29,7 @@ requirements:
     - numpy
     - pytorch
     - pytorch =*=cuda*
+    - cuda-version {{ cuda_compiler_version }}
   run:
     - python
     - {{ pin_compatible('numpy') }}
