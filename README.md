@@ -237,5 +237,6 @@ Feedstock Maintainers
 =====================
 
 * [@JennaLipscomb](https://github.com/JennaLipscomb/)
+* [@h-vetinari](https://github.com/h-vetinari/)
 * [@mxr-conda](https://github.com/mxr-conda/)
 
