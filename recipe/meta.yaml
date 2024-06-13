@@ -1,32 +1,45 @@
-{% set name = "kaolin" %}
-{% set version = "0.13.0" %}
+{% set version = "0.15.0" %}
 
+{% if cuda_compiler_version in (None, "None", True, False) %}
+{% set cuda_major = 0 %}
+{% else %}
+{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
+{% endif %}
 
 package:
-  name: {{ name|lower }}
+  name: kaolin
   version: {{ version }}
 
 source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f0d20de5cedae1ad9c0b16771487617476cfbd0bd66aea17e8857b0b7fa14ce4
+  sha256: be1c02da148a79a5c02631d7eb30c080c079c7ea925fa89f7c4d2f24dbdfc03d
   patches:
     - 0001-loosen-version-pins.patch
 
 build:
   number: 0
-  skip: true  # [cuda_compiler_version == "None" or cuda_compiler_version == "10.2"]
+  skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
 requirements:
   build:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
   host:
-    - pip
     - python
+    - pip
+    # still using removed `from pkg_resources import packaging`
+    - setuptools <70
     - cython
     - numpy
+    - pytorch
     - pytorch =*=cuda*
-    - pytorch <2
+    - cuda-version {{ cuda_compiler_version }}
+    {% if cuda_major >= 12 %}
+    - libcublas-dev
+    - libcusolver-dev
+    - libcusparse-dev
+    {% endif %}
   run:
     - python
     - {{ pin_compatible('numpy') }}
@@ -34,7 +47,7 @@ requirements:
     - pillow
     - tqdm
     - pytorch =*=cuda*
-    - pytorch <2
+    - pygltflib
 
 test:
   imports:
