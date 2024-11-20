@@ -1,4 +1,4 @@
-{% set version = "0.16.0" %}
+{% set version = "0.17.0" %}
 
 {% if cuda_compiler_version in (None, "None", True, False) %}
 {% set cuda_major = 0 %}
@@ -12,7 +12,7 @@ package:
 
 source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 08bc6b48a6e33a1628b66a87533ce0baf93d541fd8a0f2bbdb33489e193bca2a
+  sha256: f7ec30abb1ab6c9e47701acbabc635111a274abfe50a1da16d5bdefdfe469ebb
   patches:
     - 0001-loosen-version-pins.patch
 
