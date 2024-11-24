@@ -14,7 +14,7 @@ source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
   sha256: f7ec30abb1ab6c9e47701acbabc635111a274abfe50a1da16d5bdefdfe469ebb
   patches:
-    - 0001-loosen-version-pins.patch
+    - patches/0001-loosen-version-pins.patch
 
 build:
   number: 0
