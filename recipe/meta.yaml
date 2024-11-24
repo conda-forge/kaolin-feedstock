@@ -47,6 +47,7 @@ requirements:
     - tqdm
     - pytorch =*=cuda*
     - pygltflib
+    - torchvision
 
 test:
   imports:
