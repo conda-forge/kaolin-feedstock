@@ -28,8 +28,7 @@ requirements:
   host:
     - python
     - pip
-    # still using removed `from pkg_resources import packaging`
-    - setuptools <70
+    - setuptools
     - cython
     - numpy
     - pytorch
