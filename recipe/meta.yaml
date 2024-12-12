@@ -48,6 +48,7 @@ requirements:
     - pytorch =*=cuda*
     - pygltflib
     - torchvision
+    - warp-lang
 
 test:
   imports:
