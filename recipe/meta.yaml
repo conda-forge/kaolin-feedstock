@@ -40,14 +40,15 @@ requirements:
     - libcusparse-dev
     {% endif %}
   run:
-    - python
+    - ipycanvas
     - ipyevents
-    - scipy
     - pillow
-    - tqdm
-    - pytorch =*=cuda*
     - pygltflib
+    - python
+    - pytorch =*=cuda*
+    - scipy
     - torchvision
+    - tqdm
     - warp-lang
 
 test:
