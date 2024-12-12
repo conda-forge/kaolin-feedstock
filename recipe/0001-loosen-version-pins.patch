@@ -1,4 +1,4 @@
-From 96d95828af5e8abcb8079246ad49ffa82e40f0a7 Mon Sep 17 00:00:00 2001
+From b4292355fdb268791860729bfdcefe0093bacc5f Mon Sep 17 00:00:00 2001
 From: Ista Zahn <istazahn@gmail.com>
 Date: Sun, 17 Oct 2021 14:20:08 -0400
 Subject: [PATCH] loosen version pins
@@ -8,9 +8,9 @@ Subject: [PATCH] loosen version pins
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/tools/build_requirements.txt b/tools/build_requirements.txt
-index 8c1c490..ca6e395 100644
+index 075aa61..d337cfe 100644
 --- a/tools/build_requirements.txt
 +++ b/tools/build_requirements.txt
 @@ -1 +1 @@
--cython==0.29.20
-+cython>=0.29.20
+-cython==0.29.37
++cython>=0.29.37
