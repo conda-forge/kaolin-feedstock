@@ -41,6 +41,7 @@ requirements:
     {% endif %}
   run:
     - python
+    - ipyevents
     - scipy
     - pillow
     - tqdm
