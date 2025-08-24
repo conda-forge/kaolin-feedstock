@@ -1,11 +1,5 @@
 {% set version = "0.18.0" %}
 
-{% if cuda_compiler_version in (None, "None", True, False) %}
-{% set cuda_major = 0 %}
-{% else %}
-{% set cuda_major = environ.get("cuda_compiler_version", "11.8").split(".")[0] | int %}
-{% endif %}
-
 package:
   name: kaolin
   version: {{ version }}
@@ -32,20 +26,18 @@ requirements:
     - cython
     - numpy
     - pytorch
-    - pytorch =*=cuda*
+    - pytorch * cuda*
     - cuda-version {{ cuda_compiler_version }}
-    {% if cuda_major >= 12 %}
     - libcublas-dev
     - libcusolver-dev
     - libcusparse-dev
-    {% endif %}
   run:
     - ipycanvas
     - ipyevents
     - pillow
     - pygltflib
     - python
-    - pytorch =*=cuda*
+    - pytorch * cuda*
     - scipy
     - torchvision
     - tqdm
