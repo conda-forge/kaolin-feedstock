@@ -19,4 +19,7 @@ fi
 
 export IGNORE_TORCH_VER=1
 
+# Remove 'usd-core' (PyPI) to avoid pip/conda name mismatch
+sed -i -E '/^usd-core([[:space:]]*[<>=].*)?$/d' tools/requirements.txt tools/viz_requirements.txt || true
+
 ${PYTHON} -m pip install . -vv
