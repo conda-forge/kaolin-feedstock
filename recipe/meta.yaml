@@ -11,7 +11,7 @@ source:
     - patches/0001-loosen-version-pins.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
 requirements:
@@ -41,7 +41,7 @@ requirements:
     - scipy
     - torchvision
     - tqdm
-    - warp-lang
+    - warp-lang >=1.7
 
 test:
   imports:
@@ -67,3 +67,4 @@ extra:
     - JennaLipscomb
     - mxr-conda
     - h-vetinari
+    - jeongseok-meta
