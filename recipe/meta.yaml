@@ -41,7 +41,7 @@ requirements:
     - scipy
     - torchvision
     - tqdm
-    - warp-lang
+    - warp-lang >=1.7
 
 test:
   imports:
