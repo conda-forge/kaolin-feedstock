@@ -19,6 +19,7 @@ requirements:
     - {{ compiler('cuda') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
+    - sed  # [unix]
   host:
     - python
     - pip
@@ -32,20 +33,31 @@ requirements:
     - libcusolver-dev
     - libcusparse-dev
   run:
+    - flask
     - ipycanvas
     - ipyevents
-    - pillow
+    - jupyter_client <8
+    - openusd
+    - pillow >=8.0.0
     - pygltflib
     - python
     - pytorch * cuda*
     - scipy
     - torchvision
-    - tqdm
+    - tornado
+    - tqdm >=4.51.0
     - warp-lang >=1.7
 
 test:
   imports:
     - kaolin
+  requires:
+    - pip
+    # Work around old jaxlib in the test env that requires flatbuffers <3
+    # (only affects pip-check; kaolin does not depend on this)
+    - python-flatbuffers <3.0a0
+  commands:
+    - pip check
 
 about:
   home: https://developer.nvidia.com/nvidia-kaolin
