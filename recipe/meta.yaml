@@ -9,9 +9,10 @@ source:
   sha256: 264132280c4713c9554b7c13a8bcad2c0af4da51105cf6ce06dbf01011748aa0
   patches:
     - patches/0001-loosen-version-pins.patch
+    - patches/0002-use-packaging-version.patch
 
 build:
-  number: 6
+  number: 7
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
 requirements:
@@ -23,6 +24,7 @@ requirements:
   host:
     - python
     - pip
+    - packaging
     - setuptools
     - cython
     - numpy
