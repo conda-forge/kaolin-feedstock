@@ -12,7 +12,7 @@ source:
     - patches/0002-use-packaging-version.patch
 
 build:
-  number: 7
+  number: 8
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
 requirements:
