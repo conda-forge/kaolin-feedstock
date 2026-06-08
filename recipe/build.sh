@@ -12,6 +12,9 @@ else
       export TORCH_CUDA_ARCH_LIST="5.0;6.0;6.1;7.0;7.5;8.0;8.6;8.9;9.0+PTX"
   elif [[ ${cuda_compiler_version} == 12.9 ]]; then
       export TORCH_CUDA_ARCH_LIST="5.0;6.0;7.0;7.5;8.0;8.6;9.0;10.0;12.0+PTX"
+      # PyTorch 2.11 still caps CUDA 12.9 at gcc <14, but conda-forge
+      # builds its cuda129 PyTorch packages with gcc 14.
+      export TORCH_DONT_CHECK_COMPILER_ABI=1
   elif [[ ${cuda_compiler_version} == 13.0 ]]; then
       export TORCH_CUDA_ARCH_LIST="7.5;8.0;8.6;8.9;9.0;10.0;12.0+PTX"
   else
