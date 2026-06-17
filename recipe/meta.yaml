@@ -15,10 +15,6 @@ build:
   number: 9
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
-  # torchvision 0.27 for PyTorch 2.12 does not currently have CUDA 12.9
-  # builds for Python 3.11/3.12 or CUDA 13 builds for Python 3.10.
-  skip: true  # [cuda_compiler_version == "12.9" and (py == 311 or py == 312)]
-  skip: true  # [cuda_compiler_version == "13.0" and py == 310]
 requirements:
   build:
     - {{ compiler('cuda') }}
