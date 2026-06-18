@@ -12,7 +12,7 @@ source:
     - patches/0002-use-packaging-version.patch
 
 build:
-  number: 8
+  number: 9
   skip: true  # [cuda_compiler_version == "None"]
   skip: true  # [win]
 requirements:
@@ -45,7 +45,7 @@ requirements:
     - python
     - pytorch * cuda*
     - scipy
-    - torchvision
+    - torchvision * cuda*
     - tornado
     - tqdm >=4.51.0
     - warp-lang >=1.7

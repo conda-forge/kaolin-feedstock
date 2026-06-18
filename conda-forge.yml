@@ -1,10 +1,12 @@
-azure:
-  free_disk_space: true
 conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
+github_actions:
+  max_parallel: 2
 conda_build:
   pkg_format: '2'
 bot:
   automerge: true
+workflow_settings:
+  free_disk_space: max
