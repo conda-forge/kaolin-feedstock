@@ -1,12 +1,14 @@
+bot:
+  automerge: true
+conda_build:
+  pkg_format: '2'
 conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
 github_actions:
   max_parallel: 2
-conda_build:
-  pkg_format: '2'
-bot:
-  automerge: true
+provider:
+  linux_aarch64: default
 workflow_settings:
   free_disk_space: max
