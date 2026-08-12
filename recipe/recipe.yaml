@@ -61,6 +61,9 @@ tests:
   - python:
       imports:
         - kaolin
+      # The v0 import test did not run pip check. Keep the explicitly
+      # constrained pip check below as the single dependency check.
+      pip_check: false
   - requirements:
       run:
         - pip
@@ -73,7 +76,6 @@ tests:
 about:
   homepage: https://developer.nvidia.com/nvidia-kaolin
   license: Apache-2.0
-  license_family: APACHE
   license_file: LICENSE
   summary: A Pytorch Library for Accelerating 3D Deep Learning Research
   description: |
