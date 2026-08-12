@@ -7,7 +7,7 @@ Home: https://developer.nvidia.com/nvidia-kaolin
 
 Package license: Apache-2.0
 
-Summary: A Pytorch Library for Accelerating 3D Deep Learning Research 
+Summary: A Pytorch Library for Accelerating 3D Deep Learning Research
 
 Development: https://github.com/NVIDIAGameWorks/kaolin
 
@@ -18,7 +18,6 @@ of 3D representations and includes a growing collection of
 GPU-optimized operations such as modular differentiable rendering,
 fast conversions between representations, data loading,
 3D checkpoints and more.
-
 
 Current build status
 ====================
