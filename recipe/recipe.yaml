@@ -1,26 +1,33 @@
-{% set version = "0.18.0" %}
+schema_version: 1
+
+context:
+  version: "0.18.0"
 
 package:
   name: kaolin
-  version: {{ version }}
+  version: ${{ version }}
 
 source:
-  url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v{{ version }}.tar.gz
+  url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 264132280c4713c9554b7c13a8bcad2c0af4da51105cf6ce06dbf01011748aa0
   patches:
     - patches/0001-loosen-version-pins.patch
     - patches/0002-use-packaging-version.patch
 
 build:
-  number: 10
-  skip: true  # [cuda_compiler_version == "None"]
-  skip: true  # [win]
+  number: 11
+  skip:
+    - cuda_compiler_version == "None"
+    - win
+  script: bash "${RECIPE_DIR}/build.sh"
+
 requirements:
   build:
-    - {{ compiler('cuda') }}
-    - {{ compiler('cxx') }}
-    - {{ stdlib('c') }}
-    - sed  # [unix]
+    - ${{ compiler("cuda") }}
+    - ${{ compiler("cxx") }}
+    - ${{ stdlib("c") }}
+    - if: unix
+      then: sed
   host:
     - python
     - pip
@@ -30,7 +37,7 @@ requirements:
     - numpy
     - pytorch
     - pytorch * cuda*
-    - cuda-version {{ cuda_compiler_version }}
+    - cuda-version ==${{ cuda_compiler_version }}
     - libcublas-dev
     - libcusolver-dev
     - libcusparse-dev
@@ -50,31 +57,35 @@ requirements:
     - tqdm >=4.51.0
     - warp-lang >=1.7
 
-test:
-  imports:
-    - kaolin
-  requires:
-    - pip
-    # Work around old jaxlib in the test env that requires flatbuffers <3
-    # (only affects pip-check; kaolin does not depend on this)
-    - python-flatbuffers <3.0a0
-  commands:
-    - pip check
+tests:
+  - python:
+      imports:
+        - kaolin
+      # The v0 import test did not run pip check. Keep the explicitly
+      # constrained pip check below as the single dependency check.
+      pip_check: false
+  - requirements:
+      run:
+        - pip
+        # Work around old jaxlib in the test env that requires flatbuffers <3
+        # (only affects pip-check; kaolin does not depend on this)
+        - python-flatbuffers <3.0a0
+    script:
+      - pip check
 
 about:
-  home: https://developer.nvidia.com/nvidia-kaolin
+  homepage: https://developer.nvidia.com/nvidia-kaolin
   license: Apache-2.0
-  license_family: APACHE
   license_file: LICENSE
-  summary: 'A Pytorch Library for Accelerating 3D Deep Learning Research '
+  summary: A Pytorch Library for Accelerating 3D Deep Learning Research
   description: |
     NVIDIA Kaolin library provides a PyTorch API for working with a variety
     of 3D representations and includes a growing collection of
     GPU-optimized operations such as modular differentiable rendering,
     fast conversions between representations, data loading,
     3D checkpoints and more.
-  dev_url: https://github.com/NVIDIAGameWorks/kaolin
-  doc_url: https://kaolin.readthedocs.io/en/latest/
+  repository: https://github.com/NVIDIAGameWorks/kaolin
+  documentation: https://kaolin.readthedocs.io/en/latest/
 
 extra:
   recipe-maintainers:
