@@ -11,15 +11,21 @@ source:
   url: https://github.com/NVIDIAGameWorks/kaolin/archive/refs/tags/v${{ version }}.tar.gz
   sha256: 264132280c4713c9554b7c13a8bcad2c0af4da51105cf6ce06dbf01011748aa0
   patches:
+    # v0.18.0 hard-pins an obsolete Cython; remove once a newer release no
+    # longer pins tools/build_requirements.txt to Cython 0.29.37.
     - patches/0001-loosen-version-pins.patch
+    # pkg_resources is removed from current setuptools; remove once upstream
+    # setup.py uses packaging.version or another supported version parser.
     - patches/0002-use-packaging-version.patch
 
 build:
-  number: 11
+  number: 12
   skip:
     - cuda_compiler_version == "None"
-    - win
-  script: bash "${RECIPE_DIR}/build.sh"
+    # PyTorch 2.13's Windows CUDA builds currently target CUDA 13.0.
+    - win and cuda_compiler_version != "13.0"
+  script:
+    file: ${{ "build.bat" if win else "build.sh" }}
 
 requirements:
   build:
