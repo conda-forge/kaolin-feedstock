@@ -19,7 +19,7 @@ jobs:
     timeout-minutes: 360
     strategy:
       fail-fast: false
-      max-parallel: 2
+      max-parallel: 50
       matrix:
         include:
           - CONFIG: linux_64_c_stdlib_version2.17cuda_compiler_version12.9cxx_compiler_version14python3.11.____cpython
