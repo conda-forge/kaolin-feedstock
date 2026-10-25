@@ -7,8 +7,6 @@ conda_forge_output_validation: true
 github:
   branch_name: main
   tooling_branch_name: main
-github_actions:
-  max_parallel: 2
 provider:
   linux_aarch64: default
 workflow_settings:
