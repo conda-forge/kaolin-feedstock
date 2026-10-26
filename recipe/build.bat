@@ -5,6 +5,10 @@ set "FORCE_CUDA=1"
 set "IGNORE_TORCH_VER=1"
 set "TORCH_CUDA_ARCH_LIST=7.5;8.0;8.6;8.9;9.0;10.0;12.0+PTX"
 
+rem CUDA 13.4's CCCL rejects MSVC's traditional preprocessor; cl.exe reads CL, so this
+rem also reaches nvcc's host compiles. Remove once torch's cpp_extension passes it.
+set "CL=/Zc:preprocessor %CL%"
+
 rem CUDA development packages install Windows import libraries under x64.
 rem Remove once their activation adds this directory to the linker search path.
 set "LIB=%PREFIX%\Library\lib\x64;%LIB%"

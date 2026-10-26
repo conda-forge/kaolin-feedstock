@@ -19,11 +19,11 @@ source:
     - patches/0002-use-packaging-version.patch
 
 build:
-  number: 12
+  number: 13
   skip:
     - cuda_compiler_version == "None"
-    # PyTorch 2.13's Windows CUDA builds currently target CUDA 13.0.
-    - win and cuda_compiler_version != "13.0"
+    # conda-forge PyTorch has no Windows CUDA 12.9 builds.
+    - win and cuda_compiler_version == "12.9"
   script:
     file: ${{ "build.bat" if win else "build.sh" }}
 
